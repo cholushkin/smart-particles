@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Sources\glfwbackend\imgui_impl_opengl3.cpp">
+      <Filter>imguibackend</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\glfwbackend\imgui_impl_glfw.cpp">
+      <Filter>imguibackend</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\glfwbackend\main.cpp">
+      <Filter>imguibackend</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\imgui\imgui.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\imgui\imgui_demo.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\imgui\imgui_draw.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\imgui\imgui_tables.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\imgui\imgui_widgets.cpp">
+      <Filter>imgui</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\glfwbackend\imgui_impl_opengl3.h">
+      <Filter>imguibackend</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\glfwbackend\imgui_impl_opengl3_loader.h">
+      <Filter>imguibackend</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\glfwbackend\imgui_impl_glfw.h">
+      <Filter>imguibackend</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\imgui\imconfig.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\imgui\imgui.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\imgui\imgui_internal.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\imgui\imstb_rectpack.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\imgui\imstb_textedit.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\imgui\imstb_truetype.h">
+      <Filter>imgui</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="imgui">
+      <UniqueIdentifier>{8876e7ce-a985-4f59-8ee4-84978dfc4ecb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="imguibackend">
+      <UniqueIdentifier>{b04a6027-d976-41a3-b141-467283ce7567}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
