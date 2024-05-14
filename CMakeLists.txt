@@ -30,6 +30,11 @@ source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${GLAD_SOURCE} ${GLFW_SOURCE
 
 # Link GLFW library to the executable
 target_link_libraries(${PROJECT_NAME} glfw3_mt)
+target_link_options(${PROJECT_NAME} PRIVATE /NODEFAULTLIB:LIBCMT)
+
+# Set the working directory to the current directory for the executable
+set_target_properties(${PROJECT_NAME} PROPERTIES VS_DEBUGGER_WORKING_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}")
+
 
 # Set the startup project in Visual Studio
 set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})

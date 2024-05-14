@@ -95,8 +95,8 @@ int main() {
     }
 
     // Load shader source code from files
-    std::string vertexShaderSource = readShaderSource("shaders/vertex_shader.glsl");
-    std::string fragmentShaderSource = readShaderSource("shaders/fragment_shader.glsl");
+    std::string vertexShaderSource = readShaderSource("assets/shaders/vertex_shader.glsl");
+    std::string fragmentShaderSource = readShaderSource("assets/shaders/fragment_shader.glsl");
 
     // Create shader program
     unsigned int shaderProgram = createShaderProgram(vertexShaderSource, fragmentShaderSource);
