@@ -4,8 +4,11 @@
 #include <fstream>
 #include <sstream>
 
+#include "application.h"
+
 // Function to read shader source code from file
-std::string readShaderSource(const std::string& filePath) {
+std::string readShaderSource(const std::string& filePath)
+{
     std::ifstream file(filePath);
     std::stringstream stream;
     stream << file.rdbuf();
@@ -13,7 +16,8 @@ std::string readShaderSource(const std::string& filePath) {
 }
 
 // Function to compile shader
-unsigned int compileShader(unsigned int type, const std::string& source) {
+unsigned int compileShader(unsigned int type, const std::string& source)
+{
     unsigned int id = glCreateShader(type);
     const char* src = source.c_str();
     glShaderSource(id, 1, &src, nullptr);
@@ -22,7 +26,8 @@ unsigned int compileShader(unsigned int type, const std::string& source) {
     // Check for shader compilation errors
     int result;
     glGetShaderiv(id, GL_COMPILE_STATUS, &result);
-    if (result == GL_FALSE) {
+    if (result == GL_FALSE)
+    {
         int length;
         glGetShaderiv(id, GL_INFO_LOG_LENGTH, &length);
         char* message = (char*)alloca(length * sizeof(char));
@@ -36,7 +41,9 @@ unsigned int compileShader(unsigned int type, const std::string& source) {
 }
 
 // Function to create shader program
-unsigned int createShaderProgram(const std::string& vertexShaderSource, const std::string& fragmentShaderSource) {
+unsigned int createShaderProgram(const std::string& vertexShaderSource, const std::string& fragmentShaderSource)
+{
+    std::cout << "Compiling shaders...\n";
     unsigned int program = glCreateProgram();
     unsigned int vs = compileShader(GL_VERTEX_SHADER, vertexShaderSource);
     unsigned int fs = compileShader(GL_FRAGMENT_SHADER, fragmentShaderSource);
@@ -49,7 +56,8 @@ unsigned int createShaderProgram(const std::string& vertexShaderSource, const st
     // Check for shader program linking errors
     int result;
     glGetProgramiv(program, GL_LINK_STATUS, &result);
-    if (result == GL_FALSE) {
+    if (result == GL_FALSE)
+    {
         int length;
         glGetProgramiv(program, GL_INFO_LOG_LENGTH, &length);
         char* message = (char*)alloca(length * sizeof(char));
@@ -65,12 +73,16 @@ unsigned int createShaderProgram(const std::string& vertexShaderSource, const st
     return program;
 }
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+{
     glViewport(0, 0, width, height);
 }
 
-int main() {
-    if (!glfwInit()) {
+int main()
+{
+    Application application;
+    if (!glfwInit())
+    {
         std::cerr << "Failed to initialize GLFW\n";
         return -1;
     }
@@ -80,7 +92,8 @@ int main() {
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     GLFWwindow* window = glfwCreateWindow(800, 600, "OpenGL Window", NULL, NULL);
-    if (window == NULL) {
+    if (window == NULL)
+    {
         std::cerr << "Failed to create GLFW window\n";
         glfwTerminate();
         return -1;
@@ -89,7 +102,8 @@ int main() {
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
         std::cerr << "Failed to initialize GLAD\n";
         return -1;
     }
@@ -100,14 +114,15 @@ int main() {
 
     // Create shader program
     unsigned int shaderProgram = createShaderProgram(vertexShaderSource, fragmentShaderSource);
-    if (shaderProgram == 0) {
+    if (shaderProgram == 0)
+    {
         return -1;
     }
 
     float vertices[] = {
-        -0.5f, -0.5f, 0.0f,  // bottom left
-         0.5f, -0.5f, 0.0f,  // bottom right
-         0.0f,  0.5f, 0.0f   // top
+        -0.5f, -0.5f, 0.0f, // bottom left
+        0.5f, -0.5f, 0.0f, // bottom right
+        0.0f, 0.5f, 0.0f // top
     };
 
     unsigned int VBO, VAO;
@@ -125,7 +140,8 @@ int main() {
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
 
-    while (!glfwWindowShouldClose(window)) {
+    while (!glfwWindowShouldClose(window))
+    {
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(shaderProgram); // Use the shader program
